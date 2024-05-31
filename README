@@ -1,0 +1,36 @@
+# COO Matrix Multiplication using Apache Spark
+
+This code demonstrates the multiplication of two small matrices represented in the Coordinate List (COO) format using Apache Spark's Resilient Distributed Datasets (RDDs). The COO format represents a sparse matrix as a list of tuples (index, value), where each tuple corresponds to a non-zero element in the matrix.
+
+## Requirements
+- Apache Spark: Make sure you have Apache Spark installed and properly configured.
+- Scala: This code is written in Scala and requires a Scala environment.
+
+## Function Explanation
+
+### COOMatrixMultiply
+
+This function takes two RDDs representing matrices in COO format and returns the result of their multiplication as an RDD. The multiplication process involves the following steps:
+
+1. Join Operation: Perform a join operation on the RDDs based on the common key (column index).
+2. Product Calculation: Multiply the corresponding values from the joined RDD.
+3. Summation: Sum the products for each unique key (row index, column index) to get the final result.
+
+## Example
+
+For the provided matrices `M` and `N`:
+
+```
+M = | 1.0  2.0 |
+    | 3.0  4.0 |
+
+N = | 5.0  6.0 |
+    | 7.0  8.0 |
+```
+
+The result of their multiplication (`R`) will be:
+
+```
+R = | 19.0  22.0 |
+    | 43.0  50.0 |
+```
